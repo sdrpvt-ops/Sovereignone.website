@@ -1,329 +1,342 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SovereignOne Group</title>
-  <meta name="description" content="SovereignOne Group brings together focused ventures in aviation and property, built on execution, reliability, and long-term value." />
+  <meta name="description" content="SovereignOne Group is a multi-disciplinary platform spanning aviation, property, and capital." />
+  <link rel="icon" href="/favicon.ico" />
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-soft: #f7f7f5;
-      --text: #1f1f1f;
-      --muted: #666666;
-      --line: #dddddd;
-      --accent: #1f3c88;
-      --accent-hover: #162c63;
-      --card: #fafafa;
-      --max: 1120px;
-      --radius: 14px;
+      --navy: #0f1a2b;
+      --gold: #c6a14a;
+      --gold-soft: #d8bb74;
+      --bg: #faf8f4;
+      --text: #223047;
+      --muted: #6c7685;
+      --line: rgba(15, 26, 43, 0.10);
+      --white: #ffffff;
+      --max: 1200px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
       background: var(--bg);
-      line-height: 1.6;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    header {
+    .site-header {
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.96);
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.94);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
-      z-index: 20;
+    }
+
+    .nav-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand img {
+      max-width: 240px;
+      height: auto;
+      display: block;
     }
 
     .nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 76px;
-      gap: 24px;
-    }
-
-    .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-
-    .nav-links {
-      display: flex;
       gap: 22px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
       font-size: 0.98rem;
+      color: var(--navy);
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
+    .nav a {
+      opacity: 0.9;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--gold);
     }
 
     .hero {
-      padding: 96px 0 72px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 24px 36px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      max-width: 360px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 24px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      color: var(--navy);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      max-width: 820px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
     }
 
     .eyebrow {
       display: inline-block;
-      margin-bottom: 18px;
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.92rem;
-      letter-spacing: 0.4px;
+      margin-bottom: 16px;
+      color: var(--gold);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      font-size: 0.82rem;
     }
 
-    h1 {
-      font-size: clamp(2.3rem, 5vw, 4.2rem);
-      line-height: 1.08;
+    .section h2 {
       margin: 0 0 18px;
-      max-width: 860px;
-    }
-
-    .hero p {
-      font-size: 1.18rem;
-      color: var(--muted);
-      max-width: 760px;
-      margin: 0 0 28px;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 10px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--navy);
       font-weight: 600;
-      transition: 0.2s ease;
     }
 
-    .button:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
+    .lead {
+      max-width: 880px;
+      font-size: 1.06rem;
+      line-height: 1.8;
+      color: var(--text);
     }
 
-    .button.secondary {
-      background: transparent;
-      color: var(--accent);
-    }
-
-    .button.secondary:hover {
-      background: var(--bg-soft);
-    }
-
-    section {
-      padding: 72px 0;
-    }
-
-    .soft {
-      background: var(--bg-soft);
-      border-top: 1px solid #efefef;
-      border-bottom: 1px solid #efefef;
-    }
-
-    h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      line-height: 1.15;
-      margin: 0 0 16px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 34px;
-      font-size: 1.05rem;
-    }
-
-    .cards {
+    .pillars {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      margin-top: 36px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
+    .pillar {
+      background: var(--white);
+      border: 1px solid rgba(15, 26, 43, 0.08);
+      padding: 28px 24px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.04);
     }
 
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
+    .pillar h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
       font-size: 1.25rem;
     }
 
-    .card p {
-      margin: 0 0 18px;
+    .pillar p {
+      margin: 0;
+      line-height: 1.8;
       color: var(--muted);
+      font-size: 0.98rem;
     }
 
-    .card a {
-      color: var(--accent);
-      font-weight: 600;
+    .positioning {
+      max-width: 900px;
+      line-height: 1.85;
+      color: var(--text);
+      font-size: 1.04rem;
     }
 
-    .about-copy {
-      max-width: 820px;
-      color: var(--muted);
-      font-size: 1.05rem;
+    .image-ribbon-wrap {
+      margin-top: 26px;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 26, 43, 0.08);
+      background: #efe9dd;
     }
 
-    footer {
-      padding: 36px 0 50px;
-      border-top: 1px solid var(--line);
+    .image-ribbon {
+      display: flex;
+      width: max-content;
+      animation: ribbon-scroll 34s linear infinite;
+    }
+
+    .image-ribbon:hover {
+      animation-play-state: paused;
+    }
+
+    .image-ribbon img {
+      width: 320px;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    @keyframes ribbon-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 34px 24px 60px;
       color: var(--muted);
       font-size: 0.95rem;
+      text-align: center;
     }
 
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .contact-list p {
-      margin: 0 0 8px;
-    }
-
-    @media (max-width: 820px) {
-      .cards {
+    @media (max-width: 980px) {
+      .pillars {
         grid-template-columns: 1fr;
       }
 
       .nav {
+        gap: 14px;
+        font-size: 0.92rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-wrap {
         align-items: flex-start;
-        padding: 16px 0;
         flex-direction: column;
       }
 
-      .hero {
-        padding: 72px 0 56px;
+      .brand img {
+        max-width: 220px;
       }
 
-      section {
-        padding: 56px 0;
+      .hero {
+        padding-top: 44px;
+      }
+
+      .image-ribbon img {
+        width: 240px;
+        height: 150px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">SovereignOne Group</a>
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="aviation.html">Aviation</a>
-        <a href="property.html">Property</a>
-        <a href="#contact">Contact</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="/index.html">
+        <img src="/assets/logos/sovereignone-group.png" alt="SovereignOne Group">
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="/index.html">Group</a>
+        <a href="/aviation.html">Aviation</a>
+        <a href="/property.html">Property</a>
+        <a href="/capital.html">Capital</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <span class="eyebrow">SovereignOne Group</span>
-        <h1>Focused ventures in aviation and property, built on execution, reliability, and long-term value.</h1>
-        <p>
-          SovereignOne Group brings together focused business lines built around practical execution,
-          disciplined management, and long-term relationships.
-        </p>
-        <div class="button-row">
-          <a class="button" href="aviation.html">Explore Aviation</a>
-          <a class="button secondary" href="property.html">Explore Property</a>
+      <img class="hero-logo" src="/assets/logos/sovereignone-group.png" alt="SovereignOne Group logo">
+      <h1>SovereignOne Group</h1>
+      <p>
+        A multi-disciplinary platform spanning aviation, property, and capital.
+      </p>
+    </section>
+
+    <section class="section">
+      <span class="eyebrow">Overview</span>
+      <h2>Built across connected markets</h2>
+      <p class="lead">
+        SovereignOne Group brings together a set of complementary businesses operating across real assets, aviation, and capital deployment.
+        Each vertical is focused on originating and executing opportunities within its domain, while benefiting from shared relationships,
+        insight, and strategic alignment across the Group.
+      </p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Aviation</h3>
+          <p>
+            Structuring and facilitating aircraft transactions, leasing strategies, and access to high-value aviation assets.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h3>Property</h3>
+          <p>
+            Identifying, acquiring, and managing property assets with a focus on operational efficiency, value creation, and long-term positioning.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h3>Capital</h3>
+          <p>
+            Deploying capital across digital assets, real assets, and venture opportunities through a structured, multi-strategy approach.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="soft">
-      <div class="container">
-        <h2>What We Do</h2>
-        <p class="section-intro">
-          Our current areas of activity include aviation and property management, each approached
-          with the same emphasis on professionalism, responsiveness, and commercial clarity.
-        </p>
-
-        <div class="cards">
-          <div class="card">
-            <h3>SovereignOne Aviation</h3>
-            <p>
-              Structured aircraft leasing and advisory focused on high-value assets,
-              long-term partnerships, and carefully considered transaction execution.
-            </p>
-            <a href="aviation.html">Learn More</a>
-          </div>
-
-          <div class="card">
-            <h3>SovereignOne Property Management</h3>
-            <p>
-              Property oversight and management services designed to reduce day-to-day hassle
-              for homeowners while maintaining strong standards and reliable guest experience.
-            </p>
-            <a href="property.html">Learn More</a>
-          </div>
-        </div>
-      </div>
+    <section class="section">
+      <span class="eyebrow">Platform</span>
+      <h2>Flexible by design</h2>
+      <p class="positioning">
+        The Group is designed to operate with flexibility — allowing each vertical to act independently while creating alignment where opportunities overlap.
+      </p>
     </section>
 
-    <section>
-      <div class="container">
-        <h2>About SovereignOne</h2>
-        <p class="about-copy">
-          At SovereignOne, we believe good businesses are built through consistency, trust, and
-          attention to detail. Our approach is hands-on where needed, commercial in mindset,
-          and relationship-led in execution.
-        </p>
-      </div>
-    </section>
+    <section class="section">
+      <span class="eyebrow">Across the Group</span>
+      <h2>Aviation. Property. Capital.</h2>
+      <p class="lead">
+        A unified platform operating across distinct but connected markets.
+      </p>
 
-    <section id="contact" class="soft">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="section-intro">
-          For enquiries regarding any SovereignOne activity, please get in touch.
-        </p>
-        <div class="contact-list">
-          <p><strong>Email:</strong> <a href="mailto:contact@sovereignone.website">contact@sovereignone.website</a></p>
+      <div class="image-ribbon-wrap" aria-label="SovereignOne business image ribbon">
+        <div class="image-ribbon">
+          <img src="/assets/images/group-aviation.jpg" alt="Aviation">
+          <img src="/assets/images/group-property.jpg" alt="Property">
+          <img src="/assets/images/group-bitcoin.jpg" alt="Digital Assets">
+          <img src="/assets/images/group-capital.jpg" alt="Capital Markets">
+          <img src="/assets/images/group-venture.jpg" alt="Venture">
+          <img src="/assets/images/group-aviation.jpg" alt="">
+          <img src="/assets/images/group-property.jpg" alt="">
+          <img src="/assets/images/group-bitcoin.jpg" alt="">
+          <img src="/assets/images/group-capital.jpg" alt="">
+          <img src="/assets/images/group-venture.jpg" alt="">
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <div>SovereignOne Group</div>
-      <div>© 2026 SovereignOne Group. All rights reserved.</div>
-    </div>
+  <footer class="footer">
+    SovereignOne Group
   </footer>
 </body>
 </html>

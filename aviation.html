@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SovereignOne Aviation</title>
-  <meta name="description" content="SovereignOne Aviation structures aircraft transactions, leasing strategies, and access to high-value aviation assets." />
+  <meta name="description" content="SovereignOne Aviation operates across high-value aircraft transactions, leasing strategies, and aviation asset structuring." />
   <link rel="icon" href="/favicon.ico" />
+
   <style>
     :root {
       --navy: #0f1a2b;
@@ -19,7 +20,6 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -28,14 +28,10 @@
       background: var(--bg);
     }
 
-    a { color: inherit; text-decoration: none; }
-
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(250, 248, 244, 0.94);
-      backdrop-filter: blur(8px);
+      background: rgba(250,248,244,0.94);
       border-bottom: 1px solid var(--line);
     }
 
@@ -44,312 +40,187 @@
       margin: 0 auto;
       padding: 18px 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
     }
 
-    .brand img {
-      max-width: 240px;
-      height: auto;
-      display: block;
-    }
+    .brand img { max-width: 240px; }
 
     .nav {
       display: flex;
       gap: 22px;
-      font-size: 0.98rem;
-      color: var(--navy);
-      flex-wrap: wrap;
+      font-size: 0.95rem;
     }
 
-    .nav a:hover,
-    .nav a.active {
-      color: var(--gold);
-    }
+    .nav a.active,
+    .nav a:hover { color: var(--gold); }
 
     .hero {
-      position: relative;
       min-height: 70vh;
       display: flex;
       align-items: center;
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
       background:
-        linear-gradient(rgba(15, 26, 43, 0.38), rgba(15, 26, 43, 0.22)),
+        linear-gradient(rgba(15,26,43,0.4), rgba(15,26,43,0.25)),
         url('/Assets/images/aviation-hero.png') center/cover no-repeat;
     }
 
     .hero-inner {
-      position: relative;
-      z-index: 2;
       max-width: var(--max);
       margin: 0 auto;
-      width: 100%;
       padding: 72px 24px;
-      color: #fff;
+      color: white;
     }
 
     .hero-logo {
-      max-width: 340px;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 26px;
+      max-width: 320px;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 1.04;
-      max-width: 880px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.4rem,5vw,4.2rem);
+      margin-bottom: 16px;
     }
 
     .hero p {
-      margin: 0;
-      max-width: 760px;
-      font-size: 1.12rem;
+      max-width: 700px;
       line-height: 1.8;
-      color: rgba(255,255,255,0.92);
     }
 
     .section {
       max-width: var(--max);
       margin: 0 auto;
       padding: 60px 24px;
-    }
-
-    .section + .section {
       border-top: 1px solid var(--line);
     }
 
     .eyebrow {
-      display: inline-block;
-      margin-bottom: 16px;
       color: var(--gold);
+      font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      font-size: 0.82rem;
+      margin-bottom: 12px;
+      display: inline-block;
     }
 
     .section h2 {
-      margin: 0 0 18px;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 16px;
       color: var(--navy);
-      font-weight: 600;
     }
 
     .lead {
-      max-width: 900px;
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: var(--text);
+      max-width: 800px;
+      line-height: 1.8;
     }
 
     .capabilities {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-      margin-top: 34px;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+      margin-top: 30px;
     }
 
     .capability {
-      background: var(--white);
-      border: 1px solid rgba(15, 26, 43, 0.08);
-      padding: 28px 24px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.04);
-    }
-
-    .capability h3 {
-      margin: 0 0 12px;
-      font-size: 1.22rem;
-      color: var(--navy);
-    }
-
-    .capability p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 0.97rem;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
     .points {
-      max-width: 860px;
       padding-left: 20px;
-      color: var(--text);
-      line-height: 1.9;
-    }
-
-    .points li {
-      margin-bottom: 8px;
-    }
-
-    .cta-box {
-      max-width: 760px;
-      background: var(--white);
-      border: 1px solid rgba(15, 26, 43, 0.08);
-      border-radius: 18px;
-      padding: 28px 24px;
-      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.04);
-    }
-
-    .cta-box p {
-      margin: 0 0 12px;
       line-height: 1.8;
     }
 
-    .button {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      background: var(--gold);
-      color: #fff;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
-    }
-
-    .button:hover {
-      opacity: 0.92;
-    }
-
     .footer {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 34px 24px 60px;
-      color: var(--muted);
-      font-size: 0.95rem;
       text-align: center;
+      padding: 40px;
+      color: var(--muted);
     }
 
-    @media (max-width: 980px) {
-      .capabilities {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        gap: 14px;
-        font-size: 0.92rem;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-wrap {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .brand img {
-        max-width: 220px;
-      }
-
-      .hero {
-        min-height: 58vh;
-      }
-
-      .hero-inner {
-        padding-top: 48px;
-        padding-bottom: 48px;
-      }
+    @media (max-width: 900px) {
+      .capabilities { grid-template-columns: 1fr; }
+      .nav-wrap { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
+
 <body>
 
-  <header class="site-header">
-    <div class="nav-wrap">
-      <a class="brand" href="/index.html">
-        <img src="/Assets/logos/sovereignone-aviation.png" alt="SovereignOne Aviation">
-      </a>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/index.html">
+      <img src="/Assets/logos/sovereignone-aviation.png">
+    </a>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="/index.html">Group</a>
-        <a class="active" href="/aviation.html">Aviation</a>
-        <a href="/property.html">Property</a>
-        <a href="/capital.html">Capital</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <nav class="nav">
+      <a href="/index.html">Group</a>
+      <a class="active" href="/aviation.html">Aviation</a>
+      <a href="/property.html">Property</a>
+      <a href="/capital.html">Capital</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-inner">
+    <img class="hero-logo" src="/Assets/logos/sovereignone-aviation.png">
+    <h1>Aviation. Structured. Delivered.</h1>
+    <p>
+      SovereignOne Aviation operates across high-value aircraft transactions and leasing structures, with a focus on execution, discretion, and alignment with sovereign and institutional requirements.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Overview</span>
+  <h2>Focused on complex aviation transactions</h2>
+
+  <p class="lead">
+    The platform operates in areas where structure, timing, and counterpart alignment are critical. Engagement is typically limited to sovereign, government, and select institutional relationships.
+  </p>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Capabilities</span>
+  <h2>Core activities</h2>
+
+  <div class="capabilities">
+    <div class="capability">
+      <h3>Aircraft Transactions</h3>
+      <p>Acquisition, disposal, and structuring of high-value aviation assets.</p>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <img class="hero-logo" src="/Assets/logos/sovereignone-aviation.png" alt="SovereignOne Aviation logo">
-        <h1>Trusted sovereign aircraft solutions</h1>
-        <p>
-          SovereignOne Aviation structures aircraft transactions, leasing strategies, and access to high-value aviation assets, with a focus on discretion, execution certainty, and alignment with sovereign requirements.
-        </p>
-      </div>
-    </section>
+    <div class="capability">
+      <h3>Leasing Structures</h3>
+      <p>Alignment of aircraft access with long-term operational and financial objectives.</p>
+    </div>
 
-    <section class="section">
-      <span class="eyebrow">Overview</span>
-      <h2>Structured for complex aviation requirements</h2>
-      <p class="lead">
-        SovereignOne Aviation focuses on high-value aircraft opportunities where structure, execution, and discretion matter. The platform is designed to support sovereign, government, and select strategic counterparties seeking practical transaction capability and thoughtful alignment with operational requirements.
-      </p>
-    </section>
+    <div class="capability">
+      <h3>Execution</h3>
+      <p>Discreet, dependable delivery across multi-party and time-sensitive processes.</p>
+    </div>
+  </div>
+</section>
 
-    <section class="section">
-      <span class="eyebrow">Capabilities</span>
-      <h2>What we do</h2>
+<section class="section">
+  <span class="eyebrow">Approach</span>
+  <h2>Selective and relationship-led</h2>
 
-      <div class="capabilities">
-        <div class="capability">
-          <h3>Aircraft Transactions</h3>
-          <p>
-            Support for acquisition, disposal, and transaction structuring relating to high-value business aircraft and related aviation assets.
-          </p>
-        </div>
+  <ul class="points">
+    <li>Focus on sovereign and institutional counterparties</li>
+    <li>Execution-led approach across complex transactions</li>
+    <li>Alignment with policy, budget, and operational frameworks</li>
+    <li>Engagement typically through existing relationships or introduction</li>
+  </ul>
+</section>
 
-        <div class="capability">
-          <h3>Leasing Strategies</h3>
-          <p>
-            Structuring approaches designed to align aviation access with budget, policy, operational, and long-term asset considerations.
-          </p>
-        </div>
+</main>
 
-        <div class="capability">
-          <h3>Execution &amp; Discretion</h3>
-          <p>
-            A focus on dependable execution, confidentiality, and continuity throughout complex processes involving multiple stakeholders.
-          </p>
-        </div>
-      </div>
-    </section>
+<footer class="footer">
+  SovereignOne Aviation
+</footer>
 
-    <section class="section">
-      <span class="eyebrow">Approach</span>
-      <h2>Built around certainty and alignment</h2>
-      <ul class="points">
-        <li>Structured solutions tailored to sovereign and institutional counterparties</li>
-        <li>Focus on discretion, timing, and bank-grade transaction execution</li>
-        <li>Alignment with broader operational and policy considerations</li>
-        <li>Access to high-value aviation assets and transaction pathways</li>
-      </ul>
-    </section>
-
-    <section id="contact" class="section">
-      <span class="eyebrow">Contact</span>
-      <h2>Start a conversation</h2>
-      <div class="cta-box">
-        <p>
-          If you would like to discuss a sovereign, government, or strategic aviation requirement, please get in touch in confidence.
-        </p>
-        <p>
-          <strong>Email:</strong> <a href="mailto:contact@sovereignone.website">contact@sovereignone.website</a>
-        </p>
-        <a class="button" href="mailto:contact@sovereignone.website?subject=Aviation%20Enquiry%20%E2%80%94%20SovereignOne">Email Us</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    SovereignOne Aviation
-  </footer>
 </body>
 </html>

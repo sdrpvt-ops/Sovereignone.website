@@ -6,6 +6,7 @@
   <title>SovereignOne Capital</title>
   <meta name="description" content="SovereignOne Capital is a multi-strategy platform spanning digital assets, real assets, and venture capital." />
   <link rel="icon" href="/favicon.ico" />
+
   <style>
     :root {
       --navy: #0f1a2b;
@@ -21,6 +22,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -60,6 +62,7 @@
       gap: 22px;
       font-size: 0.98rem;
       color: var(--navy);
+      flex-wrap: wrap;
     }
 
     .nav a:hover,
@@ -188,8 +191,8 @@
       width: max-content;
       gap: 38px;
       padding: 16px 0;
-      animation: ticker-scroll 28s linear infinite;
       white-space: nowrap;
+      animation: ticker-scroll 28s linear infinite;
     }
 
     .market-ticker:hover {
@@ -237,7 +240,6 @@
       .nav {
         gap: 14px;
         font-size: 0.92rem;
-        flex-wrap: wrap;
         justify-content: flex-end;
       }
     }
@@ -258,113 +260,6 @@
     }
   </style>
 </head>
-  <script>
-  const ALPHA_VANTAGE_KEY = "NE3DDU9T1WOP4VKX";
-  const FRED_KEY = "8d341c8ab5f1ea45f09f168116dd6553";
-
-  function setText(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  }
-
-  function formatUsd(value, decimals = 2) {
-    const n = Number(value);
-    if (Number.isNaN(n)) return "N/A";
-    return `$${n.toLocaleString(undefined, {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals
-    })}`;
-  }
-
-  function formatRate(value, decimals = 3) {
-    const n = Number(value);
-    if (Number.isNaN(n)) return "N/A";
-    return n.toFixed(decimals);
-  }
-
-  function formatPercent(value, decimals = 2) {
-    const n = Number(value);
-    if (Number.isNaN(n)) return "N/A";
-    return `${n.toFixed(decimals)}%`;
-  }
-
-  function duplicateTickerItems() {
-    const ticker = document.getElementById("marketTicker");
-    if (!ticker || ticker.dataset.duplicated === "true") return;
-    ticker.innerHTML += ticker.innerHTML;
-    ticker.dataset.duplicated = "true";
-  }
-
-  async function fetchJson(url) {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
-  }
-
-  async function loadAlphaVantage() {
-    const base = "https://www.alphavantage.co/query";
-
-    const urls = {
-      wti: `${base}?function=WTI&interval=daily&apikey=${ALPHA_VANTAGE_KEY}`,
-      eurusd: `${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=EUR&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`,
-      gbpusd: `${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=GBP&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`,
-      btc: `${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`,
-      gold: `${base}?function=GOLD_SILVER_SPOT&symbol=GOLD&apikey=${ALPHA_VANTAGE_KEY}`,
-      us10y: `${base}?function=TREASURY_YIELD&interval=daily&maturity=10year&apikey=${ALPHA_VANTAGE_KEY}`
-    };
-
-    const [wti, eurusd, gbpusd, btc, gold, us10y] = await Promise.all([
-      fetchJson(urls.wti),
-      fetchJson(urls.eurusd),
-      fetchJson(urls.gbpusd),
-      fetchJson(urls.btc),
-      fetchJson(urls.gold),
-      fetchJson(urls.us10y)
-    ]);
-
-    // Alpha Vantage FX / crypto exchange-rate endpoint
-    setText("eurusd", formatRate(
-      eurusd["Realtime Currency Exchange Rate"]?.["5. Exchange Rate"], 3
-    ));
-
-    setText("gbpusd", formatRate(
-      gbpusd["Realtime Currency Exchange Rate"]?.["5. Exchange Rate"], 3
-    ));
-
-    setText("btc", formatUsd(
-      btc["Realtime Currency Exchange Rate"]?.["5. Exchange Rate"], 0
-    ));
-
-    // Alpha Vantage commodities / rates endpoints
-    setText("wti", formatUsd(wti?.data?.[0]?.value, 2));
-    setText("gold", formatUsd(gold?.data?.[0]?.value, 2));
-    setText("us10y", formatPercent(us10y?.data?.[0]?.value, 2));
-  }
-
-  async function loadFred() {
-    const url =
-      `https://api.stlouisfed.org/fred/series/observations?series_id=MORTGAGE30US` +
-      `&sort_order=desc&limit=1&file_type=json&api_key=${FRED_KEY}`;
-
-    const data = await fetchJson(url);
-    const latest = data?.observations?.[0]?.value;
-    setText("mortgage30", formatPercent(latest, 2));
-  }
-
-  async function loadTicker() {
-    try {
-      await Promise.all([loadAlphaVantage(), loadFred()]);
-    } catch (err) {
-      console.error("Ticker load failed:", err);
-      ["wti", "eurusd", "gbpusd", "btc", "mortgage30", "gold", "us10y"]
-        .forEach(id => setText(id, "N/A"));
-    } finally {
-      duplicateTickerItems();
-    }
-  }
-
-  loadTicker();
-</script>
 <body>
 
   <header class="site-header">
@@ -395,33 +290,28 @@
       <span class="eyebrow">Overview</span>
       <h2>Structured across three complementary strategies</h2>
       <p class="lead">
-        SovereignOne Capital deploys capital across a defined set of strategies, each selected for its ability to capture value
-        through structure, timing, and disciplined execution. The platform is designed to operate across both emerging and
-        traditional markets, with a focus on alignment, flexibility, and risk-aware positioning.
+        SovereignOne Capital deploys capital across a defined set of strategies, each selected for its ability to capture value through structure, timing, and disciplined execution. The platform is designed to operate across both emerging and traditional markets, with a focus on alignment, flexibility, and risk-aware positioning.
       </p>
 
       <div class="strategies">
         <div class="strategy">
           <h3>Digital Assets</h3>
           <p>
-            Focused on structured exposure to digital assets, including Bitcoin and related opportunities. The strategy prioritises
-            capital preservation, disciplined entry, and long-term positioning in a rapidly evolving market.
+            Focused on structured exposure to digital assets, including Bitcoin and related opportunities. The strategy prioritises capital preservation, disciplined entry, and long-term positioning in a rapidly evolving market.
           </p>
         </div>
 
         <div class="strategy">
           <h3>Real Assets</h3>
           <p>
-            Deployment of capital into tangible, asset-backed opportunities, including aviation and property-linked strategies.
-            Emphasis is placed on downside protection, structured transactions, and predictable value creation.
+            Deployment of capital into tangible, asset-backed opportunities, including aviation and property-linked strategies. Emphasis is placed on downside protection, structured transactions, and predictable value creation.
           </p>
         </div>
 
         <div class="strategy">
           <h3>Venture Capital</h3>
           <p>
-            Selective investment into early and growth-stage businesses where capital can be paired with strategic support.
-            Focused on opportunities with strong fundamentals, scalable models, and clear pathways to value creation.
+            Selective investment into early and growth-stage businesses where capital can be paired with strategic support. Focused on opportunities with strong fundamentals, scalable models, and clear pathways to value creation.
           </p>
         </div>
       </div>
@@ -435,29 +325,122 @@
       </p>
     </section>
 
-   <section class="section ticker-section">
-  <span class="eyebrow">Market Context</span>
-  <h2>Key indicators</h2>
-  <p class="ticker-label">
-    Select indicators reflecting markets relevant to SovereignOne Capital’s areas of focus.
-  </p>
+    <section class="section ticker-section">
+      <span class="eyebrow">Market Context</span>
+      <h2>Key indicators</h2>
+      <p class="ticker-label">
+        Select indicators reflecting markets relevant to SovereignOne Capital’s areas of focus.
+      </p>
 
-  <div class="market-ticker-wrap">
-    <div class="market-ticker" id="marketTicker">
-      <div class="ticker-item"><strong>WTI</strong><span id="wti">Loading...</span></div>
-      <div class="ticker-item"><strong>EUR/USD</strong><span id="eurusd">Loading...</span></div>
-      <div class="ticker-item"><strong>GBP/USD</strong><span id="gbpusd">Loading...</span></div>
-      <div class="ticker-item"><strong>BTC</strong><span id="btc">Loading...</span></div>
-      <div class="ticker-item"><strong>US 30Y</strong><span id="mortgage30">Loading...</span></div>
-      <div class="ticker-item"><strong>Gold</strong><span id="gold">Loading...</span></div>
-      <div class="ticker-item"><strong>US 10Y</strong><span id="us10y">Loading...</span></div>
-    </div>
-  </div>
-</section>
+      <div class="market-ticker-wrap">
+        <div class="market-ticker" id="marketTicker">
+          <div class="ticker-item"><strong>WTI</strong><span id="wti">Loading...</span></div>
+          <div class="ticker-item"><strong>EUR/USD</strong><span id="eurusd">Loading...</span></div>
+          <div class="ticker-item"><strong>GBP/USD</strong><span id="gbpusd">Loading...</span></div>
+          <div class="ticker-item"><strong>BTC</strong><span id="btc">Loading...</span></div>
+          <div class="ticker-item"><strong>US 30Y</strong><span id="mortgage30">Loading...</span></div>
+          <div class="ticker-item"><strong>Gold</strong><span id="gold">Loading...</span></div>
+          <div class="ticker-item"><strong>US 10Y</strong><span id="us10y">Loading...</span></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
-    SovereignOne Capital
+    © 2026 SovereignOne Group. All rights reserved.
   </footer>
+
+  <script>
+    const ALPHA_VANTAGE_KEY = "YOUR_ALPHA_VANTAGE_KEY";
+    const FRED_KEY = "YOUR_FRED_KEY";
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function formatUsd(value, decimals = 2) {
+      const n = Number(value);
+      if (Number.isNaN(n)) return "N/A";
+      return `$${n.toLocaleString(undefined, {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      })}`;
+    }
+
+    function formatRate(value, decimals = 3) {
+      const n = Number(value);
+      if (Number.isNaN(n)) return "N/A";
+      return n.toFixed(decimals);
+    }
+
+    function formatPercent(value, decimals = 2) {
+      const n = Number(value);
+      if (Number.isNaN(n)) return "N/A";
+      return `${n.toFixed(decimals)}%`;
+    }
+
+    function duplicateTickerItems() {
+      const ticker = document.getElementById("marketTicker");
+      if (!ticker || ticker.dataset.duplicated === "true") return;
+      ticker.innerHTML += ticker.innerHTML;
+      ticker.dataset.duplicated = "true";
+    }
+
+    async function fetchJson(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
+
+    async function loadTicker() {
+      const base = "https://www.alphavantage.co/query";
+
+      const requests = {
+        wti: fetchJson(`${base}?function=WTI&interval=daily&apikey=${ALPHA_VANTAGE_KEY}`),
+        eurusd: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=EUR&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
+        gbpusd: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=GBP&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
+        btc: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
+        gold: fetchJson(`${base}?function=GOLD_SILVER_SPOT&symbol=GOLD&apikey=${ALPHA_VANTAGE_KEY}`),
+        us10y: fetchJson(`${base}?function=TREASURY_YIELD&interval=daily&maturity=10year&apikey=${ALPHA_VANTAGE_KEY}`),
+        mortgage30: fetchJson(
+          `https://api.stlouisfed.org/fred/series/observations?series_id=MORTGAGE30US&sort_order=desc&limit=1&file_type=json&api_key=${FRED_KEY}`
+        )
+      };
+
+      const entries = Object.entries(requests);
+      const results = await Promise.allSettled(entries.map(([, promise]) => promise));
+
+      const data = {};
+      entries.forEach(([key], i) => {
+        data[key] = results[i].status === "fulfilled" ? results[i].value : null;
+        if (results[i].status === "rejected") {
+          console.error(`Ticker source failed: ${key}`, results[i].reason);
+        }
+      });
+
+      setText("eurusd", formatRate(
+        data.eurusd?.["Realtime Currency Exchange Rate"]?.["5. Exchange Rate"], 3
+      ));
+
+      setText("gbpusd", formatRate(
+        data.gbpusd?.["Realtime Currency Exchange Rate"]?.["5. Exchange Rate"], 3
+      ));
+
+      setText("btc", formatUsd(
+        data.btc?.["Realtime Currency Exchange Rate"]?.["5. Exchange Rate"], 0
+      ));
+
+      setText("wti", formatUsd(data.wti?.data?.[0]?.value, 2));
+      setText("gold", formatUsd(data.gold?.data?.[0]?.value, 2));
+      setText("us10y", formatPercent(data.us10y?.data?.[0]?.value, 2));
+      setText("mortgage30", formatPercent(data.mortgage30?.observations?.[0]?.value, 2));
+
+      duplicateTickerItems();
+    }
+
+    document.addEventListener("DOMContentLoaded", loadTicker);
+  </script>
+
 </body>
 </html>

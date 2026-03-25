@@ -28,10 +28,17 @@
       background: var(--bg);
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
-      background: rgba(250,248,244,0.94);
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.94);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
 
@@ -42,18 +49,26 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
-    .brand img { max-width: 240px; }
+    .brand img {
+      max-width: 240px;
+      height: auto;
+      display: block;
+    }
 
     .nav {
       display: flex;
       gap: 22px;
       font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
     .nav a.active,
-    .nav a:hover { color: var(--gold); }
+    .nav a:hover {
+      color: var(--gold);
+    }
 
     .hero {
       max-width: var(--max);
@@ -64,13 +79,17 @@
 
     .hero-logo {
       max-width: 360px;
-      margin-bottom: 24px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 24px;
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem,5vw,4.2rem);
-      margin-bottom: 16px;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      margin: 0 0 16px;
       color: var(--navy);
+      letter-spacing: -0.02em;
     }
 
     .hero p {
@@ -78,6 +97,7 @@
       margin: 0 auto;
       line-height: 1.8;
       color: var(--muted);
+      font-size: 1.06rem;
     }
 
     .section {
@@ -97,72 +117,102 @@
     }
 
     .section h2 {
-      margin-bottom: 16px;
+      margin: 0 0 16px;
       color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
     }
 
     .lead {
       max-width: 900px;
       line-height: 1.8;
+      font-size: 1.02rem;
     }
 
     .strategies {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 30px;
     }
 
     .strategy {
-      background: white;
+      background: var(--white);
       padding: 26px;
       border-radius: 16px;
-      border: 1px solid rgba(0,0,0,0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.04);
     }
 
     .strategy h3 {
-      margin-bottom: 12px;
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 1.2rem;
+    }
+
+    .strategy p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 0.98rem;
     }
 
     .ticker-section {
       padding-top: 18px;
     }
 
+    .ticker-label {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .market-ticker-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fffdf8;
+    }
+
     .market-ticker {
       display: flex;
       width: max-content;
-      gap: 38px;
-      padding: 16px 0;
+      gap: 22px;
+      padding: 14px 0;
       white-space: nowrap;
-      animation: ticker-scroll 28s linear infinite;
+      animation: ticker-scroll 42s linear infinite;
     }
+
     .ticker-item {
-  display: inline-flex;
-  gap: 8px;
-  align-items: baseline;
-  padding-left: 10px;
-  font-size: 0.95rem;
-}
+      display: inline-flex;
+      gap: 6px;
+      align-items: baseline;
+      padding-left: 6px;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
 
-.ticker-item strong {
-  color: var(--gold);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
+    .ticker-item strong {
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
 
-.ticker-item span {
-  color: var(--navy);
-  font-weight: 500;
-}
-.ticker-item::after {
-  content: "•";
-  margin-left: 14px;
-  color: rgba(0,0,0,0.2);
-}
+    .ticker-item span {
+      color: var(--navy);
+      font-weight: 500;
+    }
 
-.ticker-item:last-child::after {
-  content: "";
-}
+    .ticker-item::after {
+      content: "•";
+      margin-left: 12px;
+      color: rgba(15, 26, 43, 0.18);
+    }
+
+    .market-ticker .ticker-item:last-child::after {
+      content: "";
+    }
+
     @keyframes ticker-scroll {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
@@ -170,13 +220,24 @@
 
     .footer {
       text-align: center;
-      padding: 40px;
+      padding: 40px 24px;
       color: var(--muted);
+      font-size: 0.95rem;
     }
 
     @media (max-width: 900px) {
-      .strategies { grid-template-columns: 1fr; }
-      .nav-wrap { flex-direction: column; align-items: flex-start; }
+      .strategies {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 14px;
+      }
     }
   </style>
 </head>
@@ -186,7 +247,7 @@
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/index.html">
-      <img src="/Assets/logos/sovereignone-group.png">
+      <img src="/Assets/logos/sovereignone-group.png" alt="SovereignOne Group">
     </a>
 
     <nav class="nav">
@@ -201,7 +262,7 @@
 <main>
 
 <section class="hero">
-  <img class="hero-logo" src="/Assets/logos/sovereignone-capital.png">
+  <img class="hero-logo" src="/Assets/logos/sovereignone-capital.png" alt="SovereignOne Capital">
   <h1>Capital, selectively deployed.</h1>
   <p>
     SovereignOne Capital is a multi-strategy platform focused on deploying capital across digital assets, real assets, and venture opportunities — with an emphasis on structure, timing, and disciplined execution.
@@ -211,7 +272,6 @@
 <section class="section">
   <span class="eyebrow">Overview</span>
   <h2>Focused on asymmetric opportunities</h2>
-
   <p class="lead">
     The platform targets opportunities where access, structure, and alignment create differentiated outcomes. Capital is deployed selectively, with a focus on preserving downside while capturing meaningful upside.
   </p>
@@ -248,15 +308,12 @@
 <section class="section">
   <span class="eyebrow">Platform Integration</span>
   <h2>Connected to the wider Group</h2>
-
   <p class="lead">
     Capital is deployed both independently and alongside SovereignOne platform opportunities, enabling alignment across origination, execution, and long-term value creation.
   </p>
-
   <p class="lead">
     Opportunities are typically sourced through existing relationships, proprietary access, and aligned partnerships.
   </p>
-
   <p class="lead">
     Participation is selective and generally by introduction.
   </p>
@@ -279,7 +336,6 @@
       <div class="ticker-item"><strong>Gold</strong><span>$4,568</span></div>
       <div class="ticker-item"><strong>US 10Y</strong><span>4.35%</span></div>
 
-      <!-- duplicate for smooth scroll -->
       <div class="ticker-item"><strong>WTI</strong><span>$89.05</span></div>
       <div class="ticker-item"><strong>EUR/USD</strong><span>1.160</span></div>
       <div class="ticker-item"><strong>GBP/USD</strong><span>1.331</span></div>

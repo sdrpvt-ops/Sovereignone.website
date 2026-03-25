@@ -338,7 +338,7 @@
           <div class="ticker-item"><strong>EUR/USD</strong><span id="eurusd">Loading...</span></div>
           <div class="ticker-item"><strong>GBP/USD</strong><span id="gbpusd">Loading...</span></div>
           <div class="ticker-item"><strong>BTC</strong><span id="btc">Loading...</span></div>
-          <div class="ticker-item"><strong>US 30Y</strong><span id="mortgage30">Loading...</span></div>
+          <div class="ticker-item"><strong>US 30Y</strong><span id="mortgage30">6.22%</span></div>
           <div class="ticker-item"><strong>Gold</strong><span id="gold">Loading...</span></div>
           <div class="ticker-item"><strong>US 10Y</strong><span id="us10y">Loading...</span></div>
         </div>
@@ -352,7 +352,6 @@
 
   <script>
     const ALPHA_VANTAGE_KEY = "NE3DDU9T1WOP4VKX";
-    const FRED_KEY = "83ec90b08b43345c51eebdcab5e9827f";
 
     function setText(id, value) {
       const el = document.getElementById(id);
@@ -402,10 +401,7 @@
         gbpusd: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=GBP&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
         btc: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
         gold: fetchJson(`${base}?function=GOLD_SILVER_SPOT&symbol=GOLD&apikey=${ALPHA_VANTAGE_KEY}`),
-        us10y: fetchJson(`${base}?function=TREASURY_YIELD&interval=daily&maturity=10year&apikey=${ALPHA_VANTAGE_KEY}`),
-        mortgage30: fetchJson(
-          `https://api.stlouisfed.org/fred/series/observations?series_id=MORTGAGE30US&sort_order=desc&limit=1&file_type=json&api_key=${FRED_KEY}`
-        )
+        us10y: fetchJson(`${base}?function=TREASURY_YIELD&interval=daily&maturity=10year&apikey=${ALPHA_VANTAGE_KEY}`)
       };
 
       const entries = Object.entries(requests);
@@ -434,7 +430,6 @@
       setText("wti", formatUsd(data.wti?.data?.[0]?.value, 2));
       setText("gold", formatUsd(data.gold?.data?.[0]?.value, 2));
       setText("us10y", formatPercent(data.us10y?.data?.[0]?.value, 2));
-      setText("mortgage30", formatPercent(data.mortgage30?.observations?.[0]?.value, 2));
 
       duplicateTickerItems();
     }

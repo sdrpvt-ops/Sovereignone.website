@@ -400,8 +400,6 @@
         eurusd: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=EUR&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
         gbpusd: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=GBP&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
         btc: fetchJson(`${base}?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=${ALPHA_VANTAGE_KEY}`),
-        gold: fetchJson(`${base}?function=GOLD_SILVER_SPOT&symbol=GOLD&apikey=${ALPHA_VANTAGE_KEY}`),
-        us10y: fetchJson(`${base}?function=TREASURY_YIELD&interval=daily&maturity=10year&apikey=${ALPHA_VANTAGE_KEY}`)
       };
 
       const entries = Object.entries(requests);

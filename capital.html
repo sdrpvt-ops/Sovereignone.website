@@ -136,6 +136,24 @@
       white-space: nowrap;
       animation: ticker-scroll 28s linear infinite;
     }
+    .ticker-item {
+  display: inline-flex;
+  gap: 8px;
+  align-items: baseline;
+  padding-left: 10px;
+  font-size: 0.95rem;
+}
+
+.ticker-item strong {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ticker-item span {
+  color: var(--navy);
+  font-weight: 500;
+}
 
     @keyframes ticker-scroll {
       from { transform: translateX(0); }

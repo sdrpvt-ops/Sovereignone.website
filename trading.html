@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SovereignOne Trading</title>
-  <meta name="description" content="SovereignOne Trading is the commodity trading arm of SovereignOne Group, focused on structured physical commodity transactions across crude oil, refined products, and related markets." />
+  <meta name="description" content="SovereignOne Trading deploys capital into structured commodity and market opportunities as part of the SovereignOne Group platform." />
   <link rel="icon" href="/favicon.ico" />
 
   <style>
@@ -24,345 +24,363 @@
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      background: var(--bg);
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    header {
-      background: var(--navy);
-      color: var(--white);
-      border-bottom: 1px solid rgba(255,255,255,0.12);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .nav {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-wrap {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 22px 28px;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
     }
 
-    .brand {
-      font-size: 20px;
-      letter-spacing: 0.5px;
-      font-weight: 600;
+    .brand img {
+      max-width: 240px;
+      height: auto;
+      display: block;
     }
 
-    .links {
+    .nav {
       display: flex;
       gap: 22px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.82);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
-    .links a:hover { color: var(--gold); }
+    .nav a.active,
+    .nav a:hover {
+      color: var(--gold);
+    }
 
     .hero {
-      background: linear-gradient(135deg, #0f1a2b 0%, #172640 100%);
-      color: var(--white);
-      padding: 90px 28px 80px;
-    }
-
-    .hero-inner {
       max-width: var(--max);
       margin: 0 auto;
+      padding: 72px 24px 24px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      max-width: 360px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      margin: 0 0 16px;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      max-width: 840px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 60px 24px;
+      border-top: 1px solid var(--line);
     }
 
     .eyebrow {
       color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.05;
-      margin: 0 0 24px;
-      font-weight: 500;
-      max-width: 900px;
-    }
-
-    .hero p {
-      font-size: 21px;
-      max-width: 760px;
-      color: rgba(255,255,255,0.82);
-      margin: 0;
-    }
-
-    main {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 70px 28px;
-    }
-
-    section {
-      border-top: 1px solid var(--line);
-      padding: 48px 0;
-    }
-
-    .section-label {
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 1.5px;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       margin-bottom: 12px;
+      display: inline-block;
     }
 
-    h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.15;
-      margin: 0 0 22px;
-      font-weight: 500;
+    .section h2 {
+      margin: 0 0 16px;
       color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
     }
 
-    h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      color: var(--navy);
-      font-weight: 500;
+    .lead {
+      max-width: 900px;
+      line-height: 1.8;
+      font-size: 1.02rem;
+      color: var(--text);
     }
 
-    p {
-      font-size: 18px;
-      margin: 0 0 18px;
-      max-width: 850px;
-    }
-
-    .grid {
+    .strategies {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 28px;
+      gap: 24px;
+      margin-top: 30px;
     }
 
-    .card {
+    .strategy {
       background: var(--white);
-      border: 1px solid var(--line);
-      padding: 28px;
-      min-height: 180px;
+      padding: 26px;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.04);
     }
 
-    .card p {
-      font-size: 16px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .structure {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 32px;
-      margin-top: 28px;
-      font-family: "Courier New", monospace;
+    .strategy h3 {
+      margin: 0 0 12px;
       color: var(--navy);
-      white-space: pre-line;
-      overflow-x: auto;
+      font-size: 1.2rem;
     }
 
-    ul {
-      margin: 18px 0 0;
+    .strategy p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .model-box {
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 30px;
+      margin-top: 28px;
+      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.035);
+    }
+
+    .model-flow {
+      font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+      color: var(--navy);
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+      margin: 0 0 12px;
+    }
+
+    .list {
+      margin-top: 20px;
       padding-left: 22px;
-      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+      font-size: 1.02rem;
     }
-
-    li { margin: 8px 0; }
 
     .cta {
       background: var(--navy);
       color: var(--white);
-      padding: 46px;
-      margin-top: 48px;
+      border-radius: 18px;
+      padding: 34px;
+      margin-top: 28px;
     }
 
-    .cta h2 { color: var(--white); }
+    .cta h2 {
+      color: var(--white);
+      margin-top: 0;
+    }
 
     .cta p {
       color: rgba(255,255,255,0.82);
+      line-height: 1.8;
+      margin-bottom: 0;
     }
 
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 34px 28px;
-      color: var(--muted);
+    .footer {
       text-align: center;
-      font-size: 14px;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    @media (max-width: 800px) {
-      .nav {
+    @media (max-width: 900px) {
+      .strategies {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-wrap {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .links {
-        flex-wrap: wrap;
+      .nav {
         gap: 14px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 70px 24px 60px;
-      }
-
-      main {
-        padding: 48px 24px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="/">SovereignOne</a>
-      <nav class="links">
-        <a href="/">Group</a>
-        <a href="/aviation.html">Aviation</a>
-        <a href="/property.html">Property</a>
-        <a href="/capital.html">Capital</a>
-        <a href="/trading.html">Trading</a>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">SovereignOne Trading</div>
-      <h1>Structured commodity trading, integrated within SovereignOne Group.</h1>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/index.html">
+      <img src="/Assets/logos/sovereignone-group.png" alt="SovereignOne Group">
+    </a>
+
+    <nav class="nav">
+      <a href="/index.html">Group</a>
+      <a href="/capital.html">Capital</a>
+      <a href="/trading.html" class="active">Trading</a>
+      <a href="/property.html">Property</a>
+      <a href="/aviation.html">Aviation</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <img class="hero-logo" src="/Assets/logos/sovereignone-group.png" alt="SovereignOne Trading">
+  <h1>Trading, structured for execution.</h1>
+  <p>
+    SovereignOne Trading deploys capital into structured commodity and market opportunities, with a focus on disciplined execution, risk-managed exposure, and short-cycle return generation.
+  </p>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Overview</span>
+  <h2>The return-generation engine of SovereignOne</h2>
+  <p class="lead">
+    SovereignOne Trading operates as an integrated Group activity, not as a disconnected standalone venture. Its purpose is to generate returns, build transaction history, deepen counterparty relationships, and support wider capital deployment across the SovereignOne platform.
+  </p>
+  <p class="lead">
+    The trading activity is relationship-led and transaction-specific, with a focus on structured opportunities where access, logistics, capital alignment, and execution discipline can create differentiated outcomes.
+  </p>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Group Model</span>
+  <h2>Connected to Capital and Asset Management</h2>
+
+  <div class="model-box">
+    <p class="model-flow">
+      CAPITAL → TRADING → ASSET MANAGEMENT → SCALE
+    </p>
+    <p class="lead">
+      Capital structures funding. Trading deploys capital into defined opportunities. Asset Management converts selected returns into longer-term value across property, aviation, and digital assets. Together, these activities create a more complete and scalable platform.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Focus Areas</span>
+  <h2>Structured commodity and market opportunities</h2>
+
+  <div class="strategies">
+    <div class="strategy">
+      <h3>Crude Oil</h3>
       <p>
-        SovereignOne Trading operates as the Group’s dedicated commodity trading arm, focused on structured physical transactions across crude oil, refined products, and related markets.
+        Heavy, medium, and light crude opportunities, including prompt and term supply where pricing, logistics, refinery demand, and counterparty alignment support execution.
       </p>
     </div>
-  </section>
 
-  <main>
-    <section>
-      <div class="section-label">Overview</div>
-      <h2>A wholly owned trading subsidiary</h2>
+    <div class="strategy">
+      <h3>Refined Products</h3>
       <p>
-        SovereignOne Trading is positioned as a wholly owned subsidiary of SovereignOne Group, rather than a standalone trading LLC. This structure is designed to provide continuity, governance, and alignment across the wider SovereignOne platform.
+        Refined product transactions including ULSD, fuel oil, and related components, with a focus on regional offtake, structured supply, and repeatable transaction cycles.
       </p>
+    </div>
+
+    <div class="strategy">
+      <h3>Structured Flow</h3>
       <p>
-        The trading activity is relationship-led and transaction-specific, with a focus on disciplined execution, selective capital deployment, and long-term counterparty development.
+        Transaction cycles supported by prepayment structures, offtake alignment, logistics discipline, settlement certainty, and controlled capital exposure.
       </p>
+    </div>
+  </div>
+</section>
 
-      <div class="structure">SovereignOne Group
-│
-├── SovereignOne Aviation
-├── SovereignOne Property
-├── SovereignOne Capital
-└── SovereignOne Trading</div>
-    </section>
+<section class="section">
+  <span class="eyebrow">Approach</span>
+  <h2>Commercial flexibility with disciplined execution</h2>
+  <p class="lead">
+    SovereignOne Trading is designed to engage directly with credible counterparties, including producers, refiners, strategic trading entities, OTC desks, private capital partners, and regional offtakers.
+  </p>
 
-    <section>
-      <div class="section-label">Activities</div>
-      <h2>Physical commodity transactions</h2>
+  <ul class="list">
+    <li>Direct counterparty engagement without unnecessary intermediation</li>
+    <li>Pricing informed by physical market realities, refinery economics, logistics, and timing</li>
+    <li>Selective prepayment and capital deployment to support transaction performance</li>
+    <li>Confidential execution for sensitive supply, offtake, and funding discussions</li>
+    <li>Long-term relationship focus rather than purely opportunistic trading</li>
+  </ul>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Capital Support</span>
+  <h2>Aligned with SovereignOne Capital</h2>
+  <p class="lead">
+    SovereignOne Trading is supported by the Group’s capital structuring capability. Funding may include internal allocation, strategic funding relationships, asset-backed liquidity, digital-asset-backed participation, and transaction-specific capital support where appropriate.
+  </p>
+  <p class="lead">
+    The objective is to build from selective, controlled transactions into scalable and repeatable trading cycles supported by execution history and counterparty confidence.
+  </p>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Governance</span>
+  <h2>Designed to scale responsibly</h2>
+
+  <div class="strategies">
+    <div class="strategy">
+      <h3>Counterparty Review</h3>
       <p>
-        SovereignOne Trading focuses on structured opportunities where access, logistics, capital alignment, and counterparty relationships can create differentiated outcomes.
+        KYC, commercial credibility, source of supply, offtake capability, transaction history, and settlement capability are reviewed before engagement.
       </p>
+    </div>
 
-      <div class="grid">
-        <div class="card">
-          <h3>Crude Oil</h3>
-          <p>Heavy, medium, and light crude opportunities, including prompt and term supply where pricing, logistics, and refinery demand align.</p>
-        </div>
-
-        <div class="card">
-          <h3>Refined Products</h3>
-          <p>Refined product transactions including ULSD, fuel oil, and related components, with a focus on regional offtake and structured supply.</p>
-        </div>
-
-        <div class="card">
-          <h3>Structured Flow</h3>
-          <p>Repeatable transaction cycles supported by prepayment structures, offtake alignment, logistics discipline, and capital control.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-label">Approach</div>
-      <h2>Commercial flexibility with disciplined execution</h2>
+    <div class="strategy">
+      <h3>Risk Discipline</h3>
       <p>
-        The platform is built to engage directly with credible counterparties, including producers, refiners, strategic trading entities, and capital partners.
+        Capital exposure is assessed on a transaction-by-transaction basis, with a preference for controlled, defined, and commercially justified risk.
       </p>
+    </div>
 
-      <ul>
-        <li>Direct counterparty engagement without unnecessary intermediation</li>
-        <li>Pricing driven by physical market realities, refinery economics, and logistics</li>
-        <li>Selective prepayment and capital deployment to support transaction performance</li>
-        <li>Confidential execution for sensitive supply, offtake, and funding discussions</li>
-        <li>Long-term relationship focus rather than purely opportunistic trading</li>
-      </ul>
-    </section>
-
-    <section>
-      <div class="section-label">Capital Support</div>
-      <h2>Aligned with SovereignOne Capital</h2>
+    <div class="strategy">
+      <h3>Group Alignment</h3>
       <p>
-        SovereignOne Trading benefits from its alignment with SovereignOne Capital, enabling transaction support to be considered within the broader Group strategy.
+        Trading sits within the wider SovereignOne structure, supporting continuity across capital, transaction execution, and asset management strategy.
       </p>
-      <p>
-        Capital deployment may include internal allocation, strategic funding relationships, asset-backed liquidity, and transaction-specific support where appropriate.
-      </p>
-      <p>
-        The objective is to build from selective, controlled transactions into scalable and repeatable trading cycles supported by execution history and counterparty confidence.
-      </p>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <div class="section-label">Governance</div>
-      <h2>Designed to scale responsibly</h2>
-      <p>
-        Trading activity is conducted within a defined framework of counterparty diligence, transaction review, capital exposure control, and group-level oversight.
-      </p>
+<section class="section">
+  <span class="eyebrow">Role Within The Group</span>
+  <h2>Liquidity, evidence, and platform growth</h2>
+  <p class="lead">
+    Trading provides the Group with a potential source of liquidity, transaction evidence, and internally generated capital. Returns may be distributed, recycled into further trading opportunities, or selectively allocated into Asset Management strategies.
+  </p>
 
-      <div class="grid">
-        <div class="card">
-          <h3>Counterparty Review</h3>
-          <p>KYC, commercial credibility, source of supply, offtake capability, and transaction history are reviewed before engagement.</p>
-        </div>
+  <div class="cta">
+    <h2>Engage with SovereignOne Trading</h2>
+    <p>
+      For structured commodity opportunities, supply placement, offtake discussions, or capital participation, engagement is typically by introduction.
+    </p>
+  </div>
+</section>
 
-        <div class="card">
-          <h3>Risk Discipline</h3>
-          <p>Capital exposure is assessed on a transaction-by-transaction basis, with a preference for controlled and clearly defined risk.</p>
-        </div>
+</main>
 
-        <div class="card">
-          <h3>Group Alignment</h3>
-          <p>Trading sits within the wider SovereignOne structure, supporting continuity across capital, assets, and execution strategy.</p>
-        </div>
-      </div>
-    </section>
+<footer class="footer">
+  SovereignOne Trading · Integrated within SovereignOne Group
+</footer>
 
-    <section>
-      <div class="section-label">Engagement</div>
-      <h2>Selective, relationship-led participation</h2>
-      <p>
-        SovereignOne Trading engages with refiners, producers, trading entities, OTC desks, private capital partners, and strategic counterparties where there is a clear commercial fit.
-      </p>
-
-      <div class="cta">
-        <h2>Engage with SovereignOne Trading</h2>
-        <p>
-          For structured commodity opportunities, supply placement, offtake discussions, or capital participation, engagement is typically by introduction.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    SovereignOne Trading · A wholly owned subsidiary of SovereignOne Group
-  </footer>
 </body>
 </html>

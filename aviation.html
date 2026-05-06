@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SovereignOne Aviation</title>
-  <meta name="description" content="SovereignOne Aviation operates across high-value aircraft transactions, leasing strategies, and aviation asset structuring." />
+  <meta name="description" content="SovereignOne Aviation forms part of the Group’s asset management strategy, focused on high-value aircraft transactions, leasing structures, and aviation-linked capital deployment." />
   <link rel="icon" href="/favicon.ico" />
 
   <style>
@@ -28,10 +28,14 @@
       background: var(--bg);
     }
 
+    a { color: inherit; text-decoration: none; }
+
     .site-header {
       position: sticky;
       top: 0;
+      z-index: 100;
       background: rgba(250,248,244,0.94);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
 
@@ -42,14 +46,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
-    .brand img { max-width: 240px; }
+    .brand img {
+      max-width: 240px;
+      height: auto;
+      display: block;
+    }
 
     .nav {
       display: flex;
       gap: 22px;
       font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
     .nav a.active,
@@ -60,7 +70,7 @@
       display: flex;
       align-items: center;
       background:
-        linear-gradient(rgba(15,26,43,0.4), rgba(15,26,43,0.25)),
+        linear-gradient(rgba(15,26,43,0.42), rgba(15,26,43,0.28)),
         url('/Assets/images/aviation-hero.png') center/cover no-repeat;
     }
 
@@ -73,17 +83,23 @@
 
     .hero-logo {
       max-width: 320px;
+      width: 100%;
+      height: auto;
+      display: block;
       margin-bottom: 20px;
     }
 
     .hero h1 {
       font-size: clamp(2.4rem,5vw,4.2rem);
-      margin-bottom: 16px;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
     }
 
     .hero p {
-      max-width: 700px;
+      max-width: 760px;
       line-height: 1.8;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.06rem;
     }
 
     .section {
@@ -103,13 +119,16 @@
     }
 
     .section h2 {
-      margin-bottom: 16px;
+      margin: 0 0 16px;
       color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
     }
 
     .lead {
-      max-width: 800px;
+      max-width: 900px;
       line-height: 1.8;
+      font-size: 1.02rem;
+      color: var(--text);
     }
 
     .capabilities {
@@ -120,26 +139,65 @@
     }
 
     .capability {
-      background: white;
-      padding: 24px;
+      background: var(--white);
+      padding: 26px;
       border-radius: 16px;
       border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.04);
+    }
+
+    .capability h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 1.2rem;
+    }
+
+    .capability p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .model-box {
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 30px;
+      margin-top: 28px;
+      box-shadow: 0 10px 30px rgba(15, 26, 43, 0.035);
+    }
+
+    .model-flow {
+      font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+      color: var(--navy);
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+      margin: 0 0 12px;
     }
 
     .points {
       padding-left: 20px;
       line-height: 1.8;
+      font-size: 1.02rem;
     }
 
     .footer {
       text-align: center;
-      padding: 40px;
+      padding: 40px 24px;
       color: var(--muted);
+      font-size: 0.95rem;
     }
 
     @media (max-width: 900px) {
       .capabilities { grid-template-columns: 1fr; }
-      .nav-wrap { flex-direction: column; align-items: flex-start; }
+
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav { gap: 14px; }
     }
   </style>
 </head>
@@ -149,15 +207,15 @@
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/index.html">
-      <img src="/Assets/logos/sovereignone-aviation.png">
+      <img src="/Assets/logos/sovereignone-group.png" alt="SovereignOne Group">
     </a>
 
     <nav class="nav">
       <a href="/index.html">Group</a>
-      <a class="active" href="/aviation.html">Aviation</a>
-      <a href="/property.html">Property</a>
       <a href="/capital.html">Capital</a>
-<a href="/trading.html">Trading</a>
+      <a href="/trading.html">Trading</a>
+      <a href="/property.html">Property</a>
+      <a class="active" href="/aviation.html">Aviation</a>
     </nav>
   </div>
 </header>
@@ -166,21 +224,39 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <img class="hero-logo" src="/Assets/logos/sovereignone-aviation.png">
-    <h1>Aviation. Structured. Delivered.</h1>
+    <img class="hero-logo" src="/Assets/logos/sovereignone-aviation.png" alt="SovereignOne Aviation">
+    <h1>Aviation Asset Management</h1>
     <p>
-      SovereignOne Aviation operates across high-value aircraft transactions and leasing structures, with a focus on execution, discretion, and alignment with sovereign and institutional requirements.
+      SovereignOne Aviation forms part of the Group’s Asset Management strategy, focused on high-value aircraft transactions, leasing structures, and aviation-linked capital deployment.
     </p>
   </div>
 </section>
 
 <section class="section">
   <span class="eyebrow">Overview</span>
-  <h2>Focused on complex aviation transactions</h2>
+  <h2>Specialised aviation assets, professionally structured</h2>
 
   <p class="lead">
-    The platform operates in areas where structure, timing, and counterpart alignment are critical. Engagement is typically limited to sovereign, government, and select institutional relationships.
+    SovereignOne Aviation operates in areas where asset quality, structure, timing, and counterparty alignment are critical. Aviation assets are treated as specialised managed assets requiring disciplined acquisition, utilisation, financing, and exit planning.
   </p>
+
+  <p class="lead">
+    Engagement is typically limited to sovereign, government, institutional, and select private relationships where there is a clear strategic or commercial fit.
+  </p>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Group Model</span>
+  <h2>Part of the wider Asset Management platform</h2>
+
+  <div class="model-box">
+    <p class="model-flow">
+      CAPITAL → TRADING → ASSET MANAGEMENT → SCALE
+    </p>
+    <p class="lead">
+      Aviation sits within SovereignOne Asset Management, alongside property and digital asset strategies. It provides a high-value asset vertical where structured capital, specialist execution, and long-term utilisation can create durable value.
+    </p>
+  </div>
 </section>
 
 <section class="section">
@@ -189,18 +265,24 @@
 
   <div class="capabilities">
     <div class="capability">
-      <h3>Aircraft Transactions</h3>
-      <p>Acquisition, disposal, and structuring of high-value aviation assets.</p>
+      <h3>Aircraft Asset Transactions</h3>
+      <p>
+        Acquisition, disposal, and structuring of high-value aviation assets where access, timing, and execution discipline are central.
+      </p>
     </div>
 
     <div class="capability">
-      <h3>Leasing Structures</h3>
-      <p>Alignment of aircraft access with long-term operational and financial objectives.</p>
+      <h3>Leasing & Utilisation Strategies</h3>
+      <p>
+        Alignment of aircraft access with long-term operational, financial, and counterparty requirements.
+      </p>
     </div>
 
     <div class="capability">
-      <h3>Execution</h3>
-      <p>Discreet, dependable delivery across multi-party and time-sensitive processes.</p>
+      <h3>Execution & Alignment</h3>
+      <p>
+        Discreet, dependable delivery across multi-party and time-sensitive aviation processes.
+      </p>
     </div>
   </div>
 </section>
@@ -210,17 +292,31 @@
   <h2>Selective and relationship-led</h2>
 
   <ul class="points">
-    <li>Focus on sovereign and institutional counterparties</li>
-    <li>Execution-led approach across complex transactions</li>
-    <li>Alignment with policy, budget, and operational frameworks</li>
+    <li>Focus on sovereign, government, institutional, and select private counterparties</li>
+    <li>Execution-led approach across complex aviation transactions</li>
+    <li>Alignment with policy, budget, operational, and financing frameworks</li>
+    <li>Asset management approach covering acquisition, utilisation, financing, and exit planning</li>
     <li>Engagement typically through existing relationships or introduction</li>
   </ul>
+</section>
+
+<section class="section">
+  <span class="eyebrow">Platform Integration</span>
+  <h2>Connected to Capital and Trading</h2>
+
+  <p class="lead">
+    Aviation opportunities may be supported by SovereignOne Capital through structured funding, investor participation, or asset-backed financing. Over time, internally generated capital from trading activity may also support selective aviation-linked opportunities where commercially appropriate.
+  </p>
+
+  <p class="lead">
+    This keeps Aviation aligned with the wider SovereignOne model: capital is structured, deployed, managed, and scaled across connected opportunities.
+  </p>
 </section>
 
 </main>
 
 <footer class="footer">
-  SovereignOne Aviation
+  SovereignOne Aviation · Asset Management within SovereignOne Group
 </footer>
 
 </body>
